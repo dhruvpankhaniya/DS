@@ -56,7 +56,7 @@
 
 #include<stdio.h>
 
-# define Max 5
+#define Max 5
 int stack[Max] ;
 int top = -1 ;
 

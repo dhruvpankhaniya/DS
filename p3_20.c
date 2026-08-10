@@ -1,3 +1,5 @@
+// 20. WAP to sort the N names in an alphabetical order. 
+
 #include<stdio.h>
 #include<string.h>
     

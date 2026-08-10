@@ -1,0 +1,64 @@
+1️⃣ Infix → Postfix
+Main rule
+
+When an operator comes from input, compare it with the operator at the TOP of STACK.
+
+📦 Comparison Box — POSTFIX
+
+| Stack TOP       | Incoming Operator | What to do                  |
+| --------------- | ----------------- | --------------------------- |
+| `+` / `-`       | `*` / `/` / `%`   | **PUSH** incoming           |
+| `+` / `-`       | `+` / `-`         | **POP**, then compare again |
+| `+` / `-`       | `^`               | **PUSH** incoming           |
+| `*` / `/` / `%` | `+` / `-`         | **POP** stack               |
+| `*` / `/` / `%` | `*` / `/` / `%`   | **POP** stack               |
+| `*` / `/` / `%` | `^`               | **PUSH** incoming           |
+| `^`             | `+` / `-`         | **POP** stack               |
+| `^`             | `*` / `/` / `%`   | **POP** stack               |
+| `^`             | `^`               | **PUSH** incoming*          |
+
+
+
+2️⃣ Infix → Prefix
+
+Here you first:
+
+Step 1
+
+Reverse the infix expression
+
+Step 2
+
+Swap ( and )
+
+Step 3
+
+Perform the operator conversion.
+
+📦 Comparison Box — PREFIX
+Stack TOP	Incoming Operator	What to do
++ / -	* / / / %	PUSH incoming
++ / -	+ / -	PUSH incoming*
++ / -	^	PUSH incoming
+* / / / %	+ / -	POP stack
+* / / / %	* / / / %	PUSH incoming*
+* / / / %	^	PUSH incoming
+^	+ / -	POP stack
+^	* / / / %	POP stack
+^	^	POP stack*
+
+The * cases are the important difference from the normal postfix conversion.
+
+
+
+Incoming has HIGHER priority
+        ↓
+      PUSH
+
+Incoming has LOWER priority
+        ↓
+       POP
+
+Same priority
+        ↓
+       POP
